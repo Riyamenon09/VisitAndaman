@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Hotel - Andaman & Nicobar{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    
+    <!-- 🔍 Left Filters -->
+    <div class="col-md-3 mb-4">
+      <h5 class="fw-bold">Filters</h5>
+      <form method="GET" action="">
+        <!-- Rating Filter -->
+        <label class="form-label">Rating</label>
+        <select class="form-select mb-3" name="rating">
+          <option value="">All</option>
+          <option value="5">★★★★★</option>
+          <option value="4">★★★★☆</option>
+          <option value="3">★★★☆☆</option>
+        </select>
+
+        <!-- Price Filter -->
+        <label class="form-label">Price Range</label>
+        <input type="number" name="min_price" class="form-control mb-2" placeholder="Min ₹">
+        <input type="number" name="max_price" class="form-control mb-3" placeholder="Max ₹">
+
+        <!-- Room Type Filter -->
+        <label class="form-label">Rooms</label>
+        <select class="form-select mb-3" name="room_type">
+          <option value="">All</option>
+          <option value="single">Single</option>
+          <option value="double">Double</option>
+          <option value="suite">Suite</option>
+        </select>
+
+        <!-- Sea View -->
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" name="sea_view" value="1" id="seaView">
+          <label class="form-check-label" for="seaView">Sea View</label>
+        </div>
+
+        <button class="btn btn-primary w-100">Apply</button>
+      </form>
+    </div>
+
+    <!-- 🏨 Hotel Listings -->
+    <div class="col-md-9">
+      <h4 class="fw-bold mb-3">Available Hotels</h4>
+      {% for hotel in hotels %}
+        <div class="card mb-4 shadow-sm">
+          <div class="row g-0">
+            
+            <!-- 🖼️ Hotel Image -->
+            <div class="col-md-4">
+              <img src="{{ hotel.image.url }}" alt="{{ hotel.name }}" 
+                   class="img-fluid rounded-start w-100 h-100" 
+                   style="object-fit: cover;">
+            </div>
+
+            <!-- 📄 Hotel Info -->
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ hotel.name }}</h5>
+                
+                <!-- ⭐ Star Rating -->
+                <p>
+                  {% for i in "01234" %}
+                    {% if forloop.counter <= hotel.rating %}
+                      <i class="bi bi-star-fill text-warning"></i>
+                    {% else %}
+                      <i class="bi bi-star text-muted"></i>
+                    {% endif %}
+                  {% endfor %}
+                </p>
+
+                <!-- 📍 Address + District -->
+                <p class="mb-1 text-muted">
+                  <i class="bi bi-geo-alt"></i> {{ hotel.address }}
+                </p>
+                <p class="mb-1 text-muted">
+                  <i class="bi bi-geo"></i> {{ hotel.district }}
+                </p>
+
+                <!-- 💰 Price -->
+                <p class="fw-bold">₹{{ hotel.price_per_night }} <span class="fw-normal text-muted">/ night</span></p>
+
+                <!-- 🏷️ Tags -->
+                <div class="mb-2">
+                  {% if hotel.free_wifi %}<span class="badge bg-secondary me-1">Free Wi-Fi</span>{% endif %}
+                  {% if hotel.parking_available %}<span class="badge bg-secondary me-1">Free Parking</span>{% endif %}
+                  {% if hotel.has_spa %}<span class="badge bg-secondary me-1">Spa</span>{% endif %}
+                  {% if hotel.swimming_pool %}<span class="badge bg-secondary me-1">Swimming Pool</span>{% endif %}
+                  {% if hotel.sea_view %}<span class="badge bg-secondary me-1">Sea View</span>{% endif %}
+                </div>
+
+                <!-- 📝 Description -->
+                <p class="card-text">{{ hotel.description }}</p>
+
+                <!-- 📞 Contact -->
+                <p class="mb-1"><i class="bi bi-telephone"></i> {{ hotel.contact_number }}</p>
+                <p><i class="bi bi-envelope"></i> {{ hotel.email }}</p>
+               <a href="{% url 'hotel_detail' id=hotel.pk %}" class="btn btn-outline-primary mt-2">
+  Check Availability
+</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% empty %}
+        <p>No hotels found.</p>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

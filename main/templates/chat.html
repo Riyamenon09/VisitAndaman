@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-3">Andaman Tourism Chatbot 🤖</h2>
+  <div id="chat-box" class="border p-3 mb-3" style="height:300px;overflow-y:auto;background:#f9f9f9;"></div>
+  <input type="text" id="user-input" class="form-control" placeholder="Ask about islands, booking, pricing...">
+  <button class="btn btn-primary mt-2" onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function sendMessage(){
+    let msg = document.getElementById("user-input").value;
+    if (!msg) return;
+    let chatBox = document.getElementById("chat-box");
+    chatBox.innerHTML += "<div><b>You:</b> " + msg + "</div>";
+
+    fetch(`/chatbot/?q=${encodeURIComponent(msg)}`)
+      .then(res => res.json())
+      .then(data => {
+          chatBox.innerHTML += "<div><b>Bot:</b> " + data.reply + "</div>";
+          chatBox.scrollTop = chatBox.scrollHeight;
+      });
+
+    document.getElementById("user-input").value = "";
+}
+</script>
+{% endblock %}

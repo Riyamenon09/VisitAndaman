@@ -1,0 +1,156 @@
+<!-- main/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Andaman & Nicobar Tourism{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="container-fluid header-top py-3 px-3">
+  <div class="row align-items-center">
+    <div class="col-12 col-md-6 d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-2 mb-2 mb-md-0">
+      <img src="/static/images/nationalemblem.png" alt="Gov Logo" class="header-logo">
+      <img src="/static/images/andamanlogo.png" alt="Tourism Logo" class="header-logo">
+      <div class="ms-2 text-center text-md-start">
+        <h5 class="fw-bold mb-1 small-title">अंडमान तथा निकोबार पर्यटन</h5>
+        <h6 class="text-black mb-1">Andaman & Nicobar Tourism</h6>
+        <small class="visit-line">Visit Andaman <i class="bi bi-heart-fill text-danger"></i></small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg bg-black">
+  <div class="container-fluid">
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}"><i class="bi bi-house-door-fill"></i> HOME</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'knowmore'%}">  <i class="bi bi-info-circle-fill"></i> ABOUT</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'book_hotel' %}"><i class="bi bi-hospital"></i> BOOK HOTEL</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-camera"></i> GALLERY</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'package_list' %}"><i class="bi bi-water"></i> PACKAGE TOUR</a></li>
+        <!-- <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-building"></i> MONUMENTS</a></li> -->
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'places' %}"><i class="bi bi-geo-alt"></i> PLACES TO VISIT</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'contact' %}"><i class="bi bi-envelope"></i> CONTACT US</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content Block -->
+<div class="container-fluid">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="bg-black text-white text-center p-3 mt-5">
+  &copy; 2025 Andaman Tourism. All rights reserved.
+</footer>
+<!-- Floating Chatbot Button -->
+<div id="chatbot-button" 
+     style="position: fixed; bottom: 20px; right: 20px; background: black; 
+            color: white; border-radius: 50%; width: 65px; height: 65px; 
+            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.6); z-index: 9999;
+            font-size: 26px;">
+  🌴
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window" 
+     style="display:none; position: fixed; bottom: 90px; right: 20px; width: 340px; height: 440px;
+            border-radius: 12px; background: #121212; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5); z-index: 9999; overflow: hidden;
+            color:white; font-family: Arial, sans-serif;">
+  
+  <!-- Header -->
+  <div style="background:black; color:white; padding:12px 15px; font-weight:bold; font-size:15px;">
+    Cocohelp 🥥🌴
+    <span style="float:right; cursor:pointer;" onclick="toggleChatbot()">✖</span>
+  </div>
+
+  <!-- Chat Box -->
+  <div id="chat-box" 
+       style="height:330px; padding:12px; overflow-y:auto; background:#1e1e1e; font-size:14px;">
+  </div>
+  
+  <!-- Input Area -->
+  <div style="padding:10px; border-top:1px solid #333; display:flex; gap:5px;">
+    <input type="text" id="user-input" placeholder="Ask me something..." 
+           style="flex:1; padding:8px; border-radius:6px; border:1px solid #444; 
+                  background:#222; color:white; font-size:14px;">
+    <button onclick="sendMessage()" 
+            style="background:black; color:white; border:none; padding:8px 12px; 
+                   border-radius:6px; cursor:pointer; font-size:14px;">
+      Send
+    </button>
+  </div>
+</div>
+
+<script>
+function toggleChatbot(){
+    let chatWindow = document.getElementById("chatbot-window");
+    chatWindow.style.display = (chatWindow.style.display === "none") ? "block" : "none";
+}
+
+document.getElementById("chatbot-button").onclick = toggleChatbot;
+
+function sendMessage(){
+    let msg = document.getElementById("user-input").value;
+    if (!msg) return;
+
+    let chatBox = document.getElementById("chat-box");
+
+    // User bubble (pointed style)
+    chatBox.innerHTML += `
+      <div style="text-align:right; margin-bottom:12px;">
+        <span style="background:#2b2b2b; color:#fff; padding:8px 12px; 
+                     border-radius:15px 15px 0px 15px; display:inline-block; max-width:75%;">
+          ${msg}
+        </span>
+      </div>`;
+
+    // Show typing animation
+    let typingId = "typing-" + Date.now();
+    chatBox.innerHTML += `<div id="${typingId}" style="text-align:left; margin-bottom:8px;">
+                             <span style="background:#000; color:#bbb; padding:6px 12px; 
+                                          border-radius:15px; font-style:italic;">
+                               Andaman Guide is typing...
+                             </span>
+                           </div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Send to backend
+    fetch(`/chatbot/?q=${encodeURIComponent(msg)}`)
+      .then(res => res.json())
+      .then(data => {
+          // Remove typing placeholder
+          let typingEl = document.getElementById(typingId);
+          if (typingEl) typingEl.remove();
+
+          // Bot bubble
+          chatBox.innerHTML += `
+            <div style="text-align:left; margin-bottom:12px;">
+              <span style="background:#000; color:#fff; padding:8px 12px; 
+                           border-radius:15px 15px 15px 0px; display:inline-block; max-width:75%;">
+                ${data.reply}
+              </span>
+            </div>`;
+          chatBox.scrollTop = chatBox.scrollHeight;
+      });
+
+    document.getElementById("user-input").value = "";
+}
+</script>

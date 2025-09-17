@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% block title %}Port Blair — Complete Guide{% endblock %}
+
+{% block content %}
+<style>
+  /* ===== HERO (full-width) ===== */
+  .hero-bleed{
+    position:relative;height:320px;width:100%;
+    background-size:cover;background-repeat:no-repeat;background-position:50% 62%;
+  }
+  .hero-bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:flex-start;text-align:left;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media (max-width:768px){.hero-bleed{height:240px;background-position:50% 58%}.hero-title{font-size:1.65rem}}
+
+  /* ===== Sections ===== */
+  .section{padding:52px 0; text-align:left !important;}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2, .section p{ text-align:left !important; margin-left:0 !important; }
+  .section .row{ justify-content:flex-start !important; }
+  .section ul{ padding-left:1.2rem; margin-left:0; }
+
+  /* Quick facts darker blue */
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;padding:16px;border-radius:10px}
+
+  /* Galleries (right column) */
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media (min-width:768px){.gallery .img-wrap{height:210px}}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- ===== HERO ===== -->
+<div class="hero-bleed" style="background-image:url('/media/places/pbhero.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Welcome to Port Blair</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- QUICK FACTS -->
+  <section class="section pt-4">
+    <div class="lead-card">
+      <div class="row g-3">
+        <div class="col-6 col-md-3"><div class="fw-bold fs-5">28–32°C</div><div class="text-muted small">Typical Temp</div></div>
+        <div class="col-6 col-md-3"><div class="fw-bold fs-5">Oct–Apr</div><div class="text-muted small">Best Time</div></div>
+        <div class="col-6 col-md-3"><div class="fw-bold fs-5">2–3 days</div><div class="text-muted small">Ideal Stay</div></div>
+        <div class="col-6 col-md-3"><div class="fw-bold fs-5">IXZ</div><div class="text-muted small">Nearest Airport</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEOGRAPHY (Text Left • Images Right) -->
+  <section id="geo" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6 order-md-1">
+        <h2>Geography & Climate</h2>
+        <p>
+          Port Blair sits on South Andaman Island facing the Bay of Bengal. The coastline has serene coves and mangroves,
+          while low hills are cloaked in tropical evergreen forest. Weather is warm and maritime year-round; the clearest
+          seas for snorkeling/diving are from October to April.
+        </p>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/package/overall1b.jpeg" alt="Coastline"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/package/overall1c.jpeg" alt="Forest & biodiversity"></div></div>
+      
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY (Text Left • Images Right) -->
+  <section id="history" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6 order-md-1">
+        <h2>Heritage & Historical Life</h2>
+        <p>
+          From indigenous settlements to the British penal colony and the freedom struggle, Port Blair’s past centers
+          around the Cellular Jail—now a National Memorial—and the ruins on Ross (Netaji Subhash Chandra Bose Island)
+          and Viper Islands.
+        </p>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/cellularjail.png" alt="Cellular Jail arches"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/rossisland.jpg" alt="Ross Island ruins"></div></div>
+       
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURE (Text Left • Images Right) -->
+  <section id="culture" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6 order-md-1">
+        <h2>Culture, Markets & Local Life</h2>
+        <p>
+          A friendly island mosaic—Bengali, Tamil, Telugu and Nicobari influences—visible in festivals, food, and crafts.
+          Explore Aberdeen Bazaar for shells and spices, and enjoy folk dances during the Island Tourism Festival.
+        </p>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/package/south2a.jpeg" alt="Festival"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/knowmore/culture.jpg" alt="Market"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES (Text Left • Images Right) -->
+  <section id="activities" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6 order-md-1">
+        <h2>Sports & Activities</h2>
+        <p>
+          Adventure options include scuba diving and snorkeling at North Bay/Jolly Buoy, kayaking through mangroves,
+          jet-skiing at Corbyn’s Cove (weather-permitting), and short treks like Munda Pahad at Chidiya Tapu.
+        </p>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="row g-3 gallery">
+          <div class="col-6 col-md-6"><div class="img-wrap"><img src="/media/package/suba1.jpg" alt="Snorkeling"></div></div>
+          <div class="col-6 col-md-6"><div class="img-wrap"><img src="/media/package/overall1d.jpeg" alt="Scuba diving"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOTELS -->
+  <section id="hotels" class="section">
+    <h2>Famous Hotels</h2>
+    <ul>
+      <li>Fortune Resort Bay Island – Sea views & infinity pool</li>
+      <li>SeaShell Port Blair – Rooftop dining with bay views</li>
+      <li>Sinclairs Bayview – Cliffside resort near Cellular Jail</li>
+      <li>Hotel Sentinel – Central, family-friendly</li>
+    </ul>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section id="food" class="section">
+    <h2>Popular Restaurants</h2>
+    <ul>
+      <li><strong>New Lighthouse Restaurant:</strong> Seafood grills & tandoor</li>
+      <li><strong>Annapurna:</strong> South & North Indian vegetarian meals</li>
+      <li><strong>Amaya:</strong> Rooftop lounge, great sunset dining</li>
+      <li><strong>Waves / Lighthouse Residency:</strong> Seafood thalis, Indian & Chinese</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section id="map" class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe
+        src="https://www.google.com/maps?q=Port+Blair,+Andaman+and+Nicobar+Islands&output=embed"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

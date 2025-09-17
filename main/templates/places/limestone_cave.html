@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% block title %}Baratang Limestone Caves — Mangrove Boat Ride & Formations{% endblock %}
+{% block content %}
+<style>
+  /* Shared layout (same as other place pages) */
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{margin-left:0!important;text-align:left!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/lime.png');">
+  <div class="hero-inner container"><h1 class="hero-title">Baratang Limestone Caves</h1></div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW (text left • images right) -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          A classic Andaman day trip, Baratang combines an early-morning drive on the Andaman Trunk Road (ATR),
+          a scenic <em>mangrove creek</em> boat ride and a short forest walk to dazzling
+          <strong>stalactite–stalagmite</strong> formations. Great for families and first-timers.
+        </p>
+        <ul>
+          <li>Distance from Port Blair: ~100 km (start very early)</li>
+          <li>Journey pieces: ATR convoy → Middle Strait Jetty → speedboat to Nayadera → 1 km walk</li>
+          <li>Ideal months: Nov–Apr (calmer seas/less rain)</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/lime.png" alt="Limestone formations"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/kayak.jpg" alt="Mangrove creek"></div></div>
+          <div class="col-12"><div class="img-wrap"><img src="/media/knowmore/forest.jpg" alt="Forest trail"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GETTING THERE & TIMINGS -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Getting There &amp; Timings</h2>
+        <ul>
+          <li><strong>Start:</strong> Hotels pick-up typically between <em>3:30–4:30 AM</em>.</li>
+          <li><strong>Convoy:</strong> Drive on the ATR in designated slots to <em>Middle Strait Jetty</em>.</li>
+          <li><strong>Boat:</strong> Shared speedboats (life jackets provided) through mangroves to <em>Nayadera</em> jetty.</li>
+          <li><strong>Walk:</strong> ~1 km easy trail to the caves (mixed boardwalk/soil path).</li>
+          <li><strong>Total time:</strong> 10–12 hours round-trip from Port Blair (traffic/queue dependent).</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="lead-card">
+          <div class="row g-3">
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">3:30–4:30</div><div class="text-muted small">AM pickup</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">~100 km</div><div class="text-muted small">Port Blair → Jetty</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">10–12 h</div><div class="text-muted small">Door-to-door</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">Easy</div><div class="text-muted small">Trail grade</div></div>
+          </div>
+        </div>
+        <p class="mt-3 muted">Exact convoy slots/boat frequency can vary by season and local administration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL SEE -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>What You’ll See</h2>
+        <ul>
+          <li><strong>Limestone Caverns:</strong> Dripping stalactites, rising stalagmites, pillars and flowstone.</li>
+          <li><strong>Mangrove Channels:</strong> Tunnels of roots and pneumatophores—great photo ops.</li>
+          <li><strong>Forest Trail:</strong> Tropical understory, occasional birds/reptiles; shaded and level most of the way.</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-12"><div class="img-wrap"><img src="/media/places/lime.png" alt="Cave interior"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSTS & PERMITS (placeholders you can tune) -->
+  <section class="section">
+    <h2>Tickets, Costs &amp; Permits</h2>
+    <ul>
+      <li><strong>Boat ticket:</strong> Shared speedboat per person (buy at jetty/through tour operator).</li>
+      <li><strong>Cave entry:</strong> Nominal fee at checkpost (cash/UPI as available).</li>
+      <li><strong>Package tours:</strong> Many operators bundle transfers + boat + guide; compare inclusions.</li>
+      <li><strong>ID:</strong> Carry government ID; convoy/jetty checks are routine.</li>
+    </ul>
+    <p class="muted">Note: Prices change by season; confirm a day prior with your hotel/operator.</p>
+  </section>
+
+  <!-- SAMPLE ITINERARY -->
+  <section class="section">
+    <h2>Sample Day Plan</h2>
+    <ul>
+      <li><strong>03:45</strong> Pickup → ATR convoy to Middle Strait</li>
+      <li><strong>07:30</strong> Boat to Nayadera → forest walk → explore caves</li>
+      <li><strong>10:30</strong> Return boat → snack break at jetty</li>
+      <li><strong>11:30</strong> Optional: <em>Mud Volcano</em> side-trip</li>
+      <li><strong>13:30</strong> Start back to Port Blair (arrive ~15:30–16:30)</li>
+    </ul>
+  </section>
+
+  <!-- SAFETY & ECO -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Safety &amp; Eco Guidelines</h2>
+        <ul>
+          <li>Wear closed shoes; rocks can be wet/slippery. Keep hands free (backpack over shoulder bag).</li>
+          <li>Do <em>not</em> touch/knock formations—stalactites are fragile and take centuries to form.</li>
+          <li>Follow boat/forest staff; stay on marked paths. Dispose of waste properly.</li>
+          <li>Carry water and light snacks; facilities are basic.</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/mud.jpg" alt="Mud Volcano (nearby)"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/parrot.jpg" alt="Parrot Island (sunset roost)"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEARBY & COMBOS -->
+  <section class="section">
+    <h2>Nearby Add-Ons</h2>
+    <ul>
+      <li><strong>Mud Volcano:</strong> 30–45 min stop; bubbling mud domes (geological curiosity).</li>
+      <li><strong>Parrot Island (evening, Baratang):</strong> Boat at dusk to see thousands of parrots return to roost
+          (weather/availability dependent).</li>
+    </ul>
+  </section>
+
+  <!-- WHAT TO PACK -->
+  <section class="section">
+    <h2>What to Carry</h2>
+    <ul>
+      <li>Water (1–2 L), snacks, hat, sunscreen, mosquito repellent.</li>
+      <li>Closed shoes/sandals with grip; light rain jacket in shoulder months.</li>
+      <li>Small torch/phone light for cave nooks (guides also carry lights).</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>FAQ</h2>
+    <ul>
+      <li><strong>Fitness required?</strong> Basic. The walk is short and mostly level.</li>
+      <li><strong>Kids/elderly friendly?</strong> Yes with supervision; avoid rush hours/heat if sensitive.</li>
+      <li><strong>Food/toilets?</strong> Available at jetty stalls; options are simple.</li>
+      <li><strong>Photography?</strong> Allowed; keep flash minimal inside to preserve fauna.</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Baratang+Limestone+Caves&output=embed" loading="lazy"
+              allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Places to Visit{% endblock %}
+
+{% block content %}
+
+<style>
+  .place-circle{
+    width:240px;height:240px;border-radius:50%;overflow:hidden;margin:0 auto
+  }
+  .place-circle img{
+    width:100%;height:100%;object-fit:cover;display:block
+  }
+  .place-link{
+    display:block;text-decoration:none;color:inherit
+  }
+  .place-link:hover .place-circle{transform:scale(1.02)}
+  .place-link:hover p{opacity:.9}
+</style>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 fw-bold">Explore Andaman & Nicobar</h2>
+
+  <div class="row justify-content-center gy-4">
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="{% url 'portblair' %}" class="place-link">
+        <div class="place-circle"><img src="/media/places/portblair.jpg" alt="Port Blair"></div>
+        <p class="mt-2 fw-semibold">Port Blair</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="{% url 'cellularjail' %}" class="place-link">
+        <div class="place-circle"><img src="/media/places/cellularjail.png" alt="Cellular Jail"></div>
+        <p class="mt-2 fw-semibold">Cellular Jail</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/rossisland/" class="place-link">
+        <div class="place-circle"><img src="/media/places/rossisland.jpg" alt="Ross Island"></div>
+        <p class="mt-2 fw-semibold">Ross Island</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/havelock/" class="place-link">
+        <div class="place-circle"><img src="/media/places/havelock.webp" alt="Havelock Island"></div>
+        <p class="mt-2 fw-semibold">Havelock Island</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/barren/" class="place-link">
+        <div class="place-circle"><img src="/media/places/barren.jpg" alt="Barren Island"></div>
+        <p class="mt-2 fw-semibold">Barren Island</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/neil/" class="place-link">
+        <div class="place-circle"><img src="/media/places/neil.avif" alt="Neil Island"></div>
+        <p class="mt-2 fw-semibold">Neil Island</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/sawmill/" class="place-link">
+        <div class="place-circle"><img src="/media/places/sawmill.jpg" alt="Chatam Saw Mill"></div>
+        <p class="mt-2 fw-semibold">Chatam Saw Mill</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/limestone-cave/" class="place-link">
+        <div class="place-circle"><img src="/media/places/lime.png" alt="Limestone Cave"></div>
+        <p class="mt-2 fw-semibold">Limestone Cave</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/mud-volcano/" class="place-link">
+        <div class="place-circle"><img src="/media/places/mud.jpg" alt="Mud Volcano"></div>
+        <p class="mt-2 fw-semibold">Mud Volcano</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/flagpoint/" class="place-link">
+        <div class="place-circle"><img src="/media/places/flagpoint.jpg" alt="Flagpoint"></div>
+        <p class="mt-2 fw-semibold">Flagpoint</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/indirapoint/" class="place-link">
+        <div class="place-circle"><img src="/media/places/indirapoint.jpg" alt="Indira Point"></div>
+        <p class="mt-2 fw-semibold">Indira Point</p>
+      </a>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3 text-center">
+      <a href="/places/parrot-island/" class="place-link">
+        <div class="place-circle"><img src="/media/places/parrot.jpg" alt="Parrot Island"></div>
+        <p class="mt-2 fw-semibold">Parrot Island</p>
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

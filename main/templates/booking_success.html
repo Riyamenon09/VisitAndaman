@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-success">🎉 Booking Confirmed!</h2>
+  <p>Thank you <b>{{ name }}</b> for booking <b>{{ package.title }}</b>.</p>
+  <p>You’ll get a confirmation email shortly.</p>
+  <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+</div>
+{% endblock %}
