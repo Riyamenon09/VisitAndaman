@@ -6,6 +6,7 @@ The most challenging problem I solved would be VisitAndaman full stack project u
 
 
 
+**About project** <br>
 
 A **full-stack tourism platform** designed for the Andaman & Nicobar Islands, where users can explore destinations, learn about the islands, and seamlessly **view & book hotels and travel packages**.  
 
