@@ -49,4 +49,3 @@ Built using **Django** and **MySQL** for robust backend handling, with a **rule-
 2. **Explore hotels/packages** – Filter and select based on preferences.  
 3. **Booking process** – Users log in/sign up and confirm booking.  
 4. **Chatbot assistance** – Available for queries regarding navigation, hotels, and packages.  
-5.
