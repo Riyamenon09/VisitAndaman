@@ -1,5 +1,9 @@
 # 🏝️ Andaman & Nicobar Tourism Web Application  
 
+The most challenging problem i solved would be VisitAndaman full stack project using Django,MySQL. For building this project, i first research about the places which are a tourist spot of Andaman and Nicobar Islands. It was made using Django at the backend, so i had to understand how to work through ORM,model,template,view, how to connect different model to other without writing complex sql query. Another challenge was making the UI responsive and integrating a rule-based chatbot to answer user queries, which required both frontend and backend coordination. And to make a responsive UI to atract any audience. 
+
+
+
 A **full-stack tourism platform** designed for the Andaman & Nicobar Islands, where users can explore destinations, learn about the islands, and seamlessly **view & book hotels and travel packages**.  
 
 Built using **Django** and **MySQL** for robust backend handling, with a **rule-based Q&A chatbot** to assist users in navigating the website and finding the right information.
