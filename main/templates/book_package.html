@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}Book Package - {{ package.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="fw-bold mb-3">Book: {{ package.title }}</h2>
+  <p class="text-muted">Fill in your details to confirm the booking.</p>
+
+  <form method="post" class="row g-3" id="booking-form">
+    {% csrf_token %}
+
+    <!-- Lead Guest -->
+    <div class="col-md-6">
+      <label class="form-label">Full Name</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Phone</label>
+      <input type="text" name="phone" class="form-control" required>
+    </div>
+
+    <!-- Stay Details -->
+    <div class="col-md-4">
+      <label class="form-label">Adults</label>
+      <input type="number" name="adults" id="adults" class="form-control" value="1" min="1" onchange="updateTotal()">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Children</label>
+      <input type="number" name="children" id="children" class="form-control" value="0" min="0" onchange="updateTotal()">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Children Ages (comma separated)</label>
+      <input type="text" name="child_ages" class="form-control" placeholder="e.g. 5,12">
+    </div>
+
+    <!-- Health Info -->
+    <div class="col-12">
+      <label class="form-label">Health Issues</label>
+      <textarea name="health_issues" class="form-control" rows="3"
+        placeholder="Any health issues we should know?"></textarea>
+    </div>
+
+    <!-- Payment Mode -->
+    <div class="col-md-6">
+      <label class="form-label">Mode of Payment</label>
+      <select name="payment_mode" class="form-select" required>
+        <option value="">Choose...</option>
+        <option value="upi">UPI</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="netbanking">Net Banking</option>
+        <option value="cod">Cash on Arrival</option>
+      </select>
+    </div>
+
+    <!-- Total Price -->
+    <div class="col-md-6">
+      <label class="form-label">Total Price</label>
+      <input type="text" id="total_price" class="form-control fw-bold text-success" readonly>
+    </div>
+
+    <!-- Submit -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-bag-check-fill"></i> Confirm Booking
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+function updateTotal() {
+    let adults = parseInt(document.getElementById("adults").value) || 0;
+    let children = parseInt(document.getElementById("children").value) || 0;
+
+    // Example: children charged at 50% of adult price
+    let pricePerAdult = {{ package.price|floatformat:0 }};
+    let pricePerChild = pricePerAdult * 0.5;
+
+    let total = (adults * pricePerAdult) + (children * pricePerChild);
+
+    document.getElementById("total_price").value = "₹" + total.toLocaleString();
+}
+
+// Initialize total on page load
+updateTotal();
+</script>
+{% endblock %}

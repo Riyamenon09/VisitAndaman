@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block title %}Know More About Island{% endblock %}
+
+{% block content %}
+<style>
+  .hero-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+    transition: filter 0.5s ease, opacity 0.5s ease;
+  }
+
+  .section:nth-child(even) {
+    flex-direction: row-reverse;
+    background-color: #f9f9f9;
+  }
+
+  .section:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  .text, .image {
+    flex: 1 1 45%;
+    padding: 20px;
+  }
+
+  .text h2 {
+    color: #0d6efd;
+    margin-bottom: 15px;
+  }
+
+  .text p, .text ul {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .blurred {
+    filter: blur(4px);
+    opacity: 0.4;
+  }
+
+  /* 🔁 RESPONSIVE STYLING FOR SMALL SCREENS */
+  @media (max-width: 768px) {
+    .section {
+      flex-direction: column !important;
+      text-align: center;
+    }
+
+    .text, .image {
+      flex: 1 1 100%;
+      padding: 10px;
+    }
+
+    .text p, .text ul {
+      font-size: 1rem;
+    }
+
+    .hero-img {
+      height: 250px;
+    }
+  }
+</style>
+
+
+<div class="container my-5">
+
+  <img src="/media/knowmore/Island.jpg" class="hero-img" alt="Andaman & Nicobar Islands">
+
+  <!-- Introduction -->
+  <div class="section">
+    <div class="text">
+      <h2>Know More Mini India</h2>
+      <p>The Andaman and Nicobar Islands, an exquisite archipelago nestled in the southeastern part of the Bay of Bengal, are
+         a union territory of India comprising over 570 islands, islets, and rocks. Known for their breathtaking natural 
+         beauty, these islands offer a harmonious blend of tropical forests, crystal-clear waters, 
+         coral reefs, and white sandy beaches, making them a paradise for nature lovers and adventurers alike. 
+         The archipelago is divided into two groups: the Andaman Islands in the north and the Nicobar Islands in the south, 
+         separated by the Ten Degree Channel. Port Blair, the capital, is a vibrant yet serene city with colonial influences and historical significance.
+        </p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/flag.jpg" alt="Introduction Image">
+    </div>
+  </div>
+  <!-- Origin of the name -->
+  <div class="section">
+    <div class="text">
+      <h2>Origin of the name</h2>
+      <p>The name "Andaman" is believed to have been derived from the Malay word "Handuman", referring to Hanuman, the Hindu monkey god. Ancient Indonesian and Malay seafarers used this term in early references to the islands. Over time, "Handuman" evolved into "Andaman."
+The term "Nicobar" is said to have originated from the Tamil word “Nakkavaram”, meaning “land of the naked people”, as used in the 8th-century records of South Indian dynasties, particularly the Chola Empire.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/history.jpg" alt="History Image">
+    </div>
+  </div>
+  <!-- Prehistoric & Indigenous History -->
+  <div class="section">
+    <div class="text">
+      <h2>Prehistoric & Indigenous History</h2>
+      <p>Archaeological findings suggest that the Andaman Islands have been inhabited for over 30,000 years, primarily by Negrito tribes such as the Great Andamanese, Jarawas, Onge, and the reclusive Sentinelese, who are among the world’s last uncontacted tribes. The Nicobar Islands are home to the Nicobarese and Shompens, of Mongoloid descent. These tribes have lived in isolation, sustaining themselves through hunting, fishing, and gathering, preserving a way of life largely untouched by modern civilization.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/inidgenous.jpg" alt="Prehistoric & Indigenous History">
+    </div>
+  </div>
+  <!-- Colonial Era & British Rule -->
+  <div class="section">
+    <div class="text">
+      <h2> Colonial Era & British Rule</h2>
+      <p>The British East India Company established the first penal colony in 1789 at Port Blair, but due to high mortality and resistance, it was soon abandoned. However, after the 1857 First War of Independence, the British revived the idea to use the islands as a penal settlement for political prisoners. The most infamous structure built during this time was the Cellular Jail, completed in 1906, also called "Kala Pani" (black waters), where hundreds of Indian freedom fighters were incarcerated under brutal conditions.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/beforeindependence.png" alt="Colonial Era & British Rule">
+    </div>
+  </div>
+  <!-- Japanese Occupation  -->
+  <div class="section">
+    <div class="text">
+      <h2>  Japanese Occupation (1942–1945)</h2>
+      <p>During World War II, the islands were occupied by Japan, and the Indian National Army (INA), led by Netaji Subhas Chandra Bose, briefly took symbolic control. Netaji even visited Port Blair in 1943 and hoisted the Indian flag, marking it as the first territory freed from British rule, even if temporaril</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/japan.jpg" alt="Japanese Occupation">
+    </div>
+  </div>
+  <!-- Post-Independence -->
+  <div class="section">
+    <div class="text">
+      <h2>   Post-Independence</h2>
+      <p>After India gained independence in 1947, the islands were officially merged with the Indian Union in 1950 and declared a Union Territory in 1956. Over the decades, development efforts have been balanced with conservation policies to protect the region’s indigenous populations and ecological diversity. Today, the Cellular Jail stands not only as a tourist attraction but also as a national memorial to Indian independence.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/jail.avif" alt="Post-Independence">
+    </div>
+  </div>
+  
+  <!-- Culture & Traditions -->
+  <div class="section">
+    <div class="text">
+      <h2>Culture & Traditions</h2>
+      <p>The culture of the Andaman and Nicobar Islands is a vibrant blend of South and Southeast Asian influences, enriched by the traditions of local tribes and settlers from mainland India. Folk dances like the Nicobari dance are performed during festivals and social gatherings, reflecting the islanders' deep-rooted sense of community and rhythm. Major festivals such as the Island Tourism Festival, Pongal, Onam, Durga Puja, and Diwali are celebrated with great enthusiasm, showcasing the islands’ religious and cultural harmony. Handicrafts, local cuisine, and traditional music also form an integral part of the cultural identity of the region.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/culture.jpg" alt="Culture Image">
+    </div>
+  </div>
+
+  <!-- Diversity -->
+  <div class="section">
+    <div class="text">
+      <h2>Diversity</h2>
+      <p>The Andaman and Nicobar Islands are home to a diverse and multicultural population, including communities such as Bengalis, Tamils, Telugus, Nicobarese, and several indigenous tribes like the Great Andamanese, Jarwas, Onges, and Sentinalese. Despite their varied linguistic, religious, and cultural backgrounds, these communities coexist in remarkable peace and unity. Hinduism, Christianity, Islam, and indigenous belief systems are all practiced with mutual respect. This harmonious blend of traditions and lifestyles makes the islands a living example of India’s “Unity in Diversity,” where tolerance and mutual appreciation are an everyday reality.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/Pongal.webp" alt="Diversity Image">
+    </div>
+  </div>
+
+  <!-- Biodiversity -->
+  <div class="section">
+    <div class="text">
+      <h2>Biodiversity & Nature</h2>
+      <p>With over 570 islands, the Andaman and Nicobar archipelago is a treasure trove of biodiversity. The region is covered with dense tropical rainforests and fringed by vibrant coral reefs that are teeming with marine life. It is home to numerous endemic species of plants, birds, animals, and marine creatures found nowhere else in the world. The islands support a delicate ecological balance and are a vital part of India’s environmental heritage. Protected areas like the Mahatma Gandhi Marine National Park, Campbell Bay National Park, and Mount Harriet National Park play a crucial role in preserving this unique ecosystem. These efforts ensure the survival of species like the Dugong (sea cow), saltwater crocodiles, and many rare orchids and butterflies.</p>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/bio.webp" alt="Biodiversity Image">
+    </div>
+  </div>
+
+  <!-- Fun Facts -->
+  <div class="section">
+    <div class="text">
+      <h2>Symbols of Natural Heritage</h2>
+      <ul>
+        <li>State Animal: The Dugong, also known as the sea cow, is a gentle marine herbivore that grazes on seagrass in shallow coastal waters. It symbolizes the islands’ commitment to marine conservation and is listed as vulnerable due to habitat loss and human interference.</li>
+        <li>State Bird: The Andaman Wood Pigeon is an endemic bird with striking black and grey plumage, found only in the dense forests of the islands. Its presence is a mark of the untouched natural beauty of the region.</li>
+        <li>State Tree: The Andaman Padauk (Pterocarpus dalbergioides), a majestic evergreen tree, is known for its high-quality timber and is native to the islands. It is an important part of the local ecosystem and economy.</li>
+        <li>State Flower: The Andaman Pyinma (Lagerstroemia hypoleuca) is a beautiful flowering tree with white or pale violet blossoms. It adds a splash of color to the tropical landscape and is admired for its natural elegance.</li>
+      </ul>
+    </div>
+    <div class="image">
+      <img src="/media/knowmore/dugong.jpg" alt="Facts Image">
+    </div>
+  </div>
+</div>
+
+<script>
+  // IntersectionObserver to blur inactive sections
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('blurred', !entry.isIntersecting);
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+{% endblock %}

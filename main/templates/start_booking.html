@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Start Booking – {{ hotel.name }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+  <div class="row g-4 mt-2">
+    <!-- LEFT -->
+    <div class="col-lg-8">
+      {% if error_msg %}<div class="alert alert-danger">{{ error_msg }}</div>{% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="check_in"  value="{{ check_in|date:'Y-m-d' }}">
+        <input type="hidden" name="check_out" value="{{ check_out|date:'Y-m-d' }}">
+        <input type="hidden" name="rooms" value="{{ rooms }}">
+        <input type="hidden" name="adults" value="{{ adults }}">
+        <input type="hidden" name="children" value="{{ children }}">
+        <input type="hidden" name="child_ages" value="{{ child_ages|join:',' }}">
+
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <h4 class="mb-3">Who’s the lead guest?</h4>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First name *</label>
+                <input type="text" name="first_name" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last name *</label>
+                <input type="text" name="last_name" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone number *</label>
+                <input type="text" name="phone" class="form-control" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <h4 class="mb-3">Special requests</h4>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <p>Which type of room would you prefer?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pref_smoking" value="non" id="non" checked>
+                  <label for="non" class="form-check-label">Non-smoking</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pref_smoking" value="smoking" id="smoking">
+                  <label for="smoking" class="form-check-label">Smoking</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p>Which bed setup would you prefer?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pref_bed" value="large" id="large" checked>
+                  <label for="large" class="form-check-label">I'd like a large bed</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pref_bed" value="twin" id="twin">
+                  <label for="twin" class="form-check-label">I'd like twin beds</label>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <label class="form-label">Additional requests</label>
+              <textarea name="extra_requests" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">SUBMIT DETAILS</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <div class="col-lg-4">
+      <div class="position-sticky" style="top: 120px;">
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div>
+                <div class="text-muted">Check-in</div>
+                <div class="fw-semibold">{{ check_in }} 12:00 PM</div>
+              </div>
+              <div class="text-muted align-self-center">→</div>
+              <div>
+                <div class="text-muted">Check-out</div>
+                <div class="fw-semibold">{{ check_out }} 09:00 AM</div>
+              </div>
+              <div class="ms-3">
+                <div class="text-muted">Nights</div>
+                <div class="fw-semibold">{{ nights }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <div class="fw-semibold">{{ hotel.name }}</div>
+            {% if hotel.address %}<div class="text-muted small">{{ hotel.address }}</div>{% endif %}
+            <hr>
+            <div>Rooms: <strong>{{ rooms }}</strong></div>
+            <div>Adults: <strong>{{ adults }}</strong></div>
+            <div>Children: <strong>{{ children }}</strong>{% if children %} ({{ child_ages|join:", " }}){% endif %}</div>
+            <div class="bg-light p-2 mt-2 rounded d-flex justify-content-between">
+              <strong>Total</strong> <span>₹{{ computed_total|floatformat:0 }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

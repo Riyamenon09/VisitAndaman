@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% block title %}{{ package.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row g-3 mb-4">
+    <div class="col-md-8">
+      <img src="{{ package.main_image.url }}" class="img-fluid rounded shadow"
+           style="height:420px;object-fit:cover;width:100%;">
+    </div>
+    <div class="col-md-4">
+      <div class="row g-2">
+        {% for img in package.images.all %}
+          <div class="col-6">
+            <img src="{{ img.image.url }}" class="img-fluid rounded shadow-sm"
+                 style="height:200px;object-fit:cover;width:100%;">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- LEFT CONTENT -->
+    <div class="col-md-8">
+      <h2 class="fw-bold mb-2">{{ package.title }}</h2>
+      <p class="text-muted">
+        <i class="bi bi-geo-alt-fill text-danger"></i> {{ package.place }}
+        | <i class="bi bi-map text-primary"></i> {{ package.get_region_display }}
+      </p>
+
+      <!-- Overview -->
+      <div class="card shadow-sm p-3 mb-4">
+        <h4><i class="bi bi-info-circle text-primary"></i> Overview</h4>
+        <p>{{ package.description }}</p>
+      </div>
+
+      <!-- Highlights -->
+      {% if package.highlights %}
+      <div class="card shadow-sm p-3 mb-4">
+        <h4><i class="bi bi-star-fill text-warning"></i> Highlights</h4>
+        <div class="row">
+          {% for line in package.highlights.splitlines %}
+          <div class="col-md-6 mb-2">
+            <i class="bi bi-check-circle-fill text-success me-2"></i> {{ line }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Day Plan -->
+      <div class="card shadow-sm p-3 mb-4">
+        <h4><i class="bi bi-calendar-week text-info"></i> Day-wise Itinerary</h4>
+        <ul class="timeline list-unstyled ms-2">
+          {% for day in package.days.all %}
+          <li class="mb-3">
+            <div class="fw-bold">
+              <i class="bi bi-sunrise-fill text-warning"></i>
+              Day {{ day.day_number }}: {{ day.title }}
+            </div>
+            <div class="text-muted small">{{ day.description }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Inclusions -->
+      {% if package.inclusions %}
+      <div class="card shadow-sm p-3 mb-4 border-success">
+        <h4 class="text-success"><i class="bi bi-check2-circle"></i> Inclusions</h4>
+        <ul class="list-unstyled">
+          {% for line in package.inclusions.splitlines %}
+            <li><i class="bi bi-check-lg text-success me-2"></i>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Exclusions -->
+      {% if package.exclusions %}
+      <div class="card shadow-sm p-3 mb-4 border-danger">
+        <h4 class="text-danger"><i class="bi bi-x-circle"></i> Exclusions</h4>
+        <ul class="list-unstyled">
+          {% for line in package.exclusions.splitlines %}
+            <li><i class="bi bi-x-lg text-danger me-2"></i>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="col-md-4">
+      <div class="p-3 border rounded sticky-top shadow-sm" style="top:80px;">
+
+        <!-- Price -->
+        <h3 class="fw-bold text-success">₹{{ package.price }}</h3>
+        <p class="text-muted"><i class="bi bi-person-fill"></i> per person</p>
+
+        <!-- Book Now -->
+        <a href="{% url 'book_package' package.id %}" class="btn btn-primary w-100 mb-3">
+          <i class="bi bi-bag-check-fill me-2"></i> Book Now
+        </a>
+
+        <!-- Limited Offer -->
+        <div class="alert alert-warning p-2 text-center small mb-3">
+          <i class="bi bi-tag-fill"></i> Limited Offer: Save 10% this week!
+        </div>
+
+        <!-- Accommodation -->
+        {% if package.accommodation_info %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body p-2">
+            <h6 class="fw-bold mb-2"><i class="bi bi-building text-primary"></i> Accommodation</h6>
+            <p class="small mb-0">{{ package.accommodation_info }}</p>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Transfers & Meals -->
+        {% if package.transfers_meals %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body p-2">
+            <h6 class="fw-bold mb-2"><i class="bi bi-bus-front text-success"></i> Transfers & Meals</h6>
+            <ul class="small mb-0">
+              {% for line in package.transfers_meals.splitlines %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Customer Rating -->
+        {% if package.customer_reviews %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body p-2">
+            <h6 class="fw-bold mb-2"><i class="bi bi-people text-info"></i> Customer Reviews</h6>
+            <p class="small mb-1">
+              {% for i in "12345"|slice:":" %}
+                {% if forloop.counter <= package.avg_rating|floatformat:0 %}
+                  <i class="bi bi-star-fill text-warning"></i>
+                {% else %}
+                  <i class="bi bi-star text-warning"></i>
+                {% endif %}
+              {% endfor %}
+              {{ package.avg_rating }}/5
+            </p>
+            <blockquote class="small fst-italic text-muted">
+              {{ package.customer_reviews }}
+            </blockquote>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Map -->
+        {% if package.map_embed %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body p-2">
+            <h6 class="fw-bold mb-2"><i class="bi bi-geo text-danger"></i> Location</h6>
+            <div class="ratio ratio-16x9 rounded">
+              <iframe src="{{ package.map_embed }}" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Support Info -->
+        <div class="border-top pt-2 small text-muted">
+          <i class="bi bi-telephone-fill text-primary"></i> +91-9876543210<br>
+          <i class="bi bi-envelope-fill text-danger"></i> support@andamantrips.com
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.timeline li {
+  position: relative;
+  padding-left: 25px;
+}
+.timeline li::before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  color: #0d6efd;
+  font-size: 12px;
+  top: 3px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Andaman & Nicobar{% endblock %}
+
+{% block content %}
+<!-- 🎞️ Slideshow Section -->
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/go2.webp" class="d-block w-100 carousel-image" alt="Beach view">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/jail.jpg" class="d-block w-100 carousel-image" alt="Cellular Jail">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/beach.webp" class="d-block w-100 carousel-image" alt="Palm Beach">
+    </div>
+  </div>
+
+  <!-- Carousel Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endblock %}

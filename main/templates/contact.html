@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Contact Us</h2>
+
+  <!-- 🏷️ Contact Info Labels -->
+  <div class="mb-4 p-3 bg-light border rounded">
+    <p><strong>📞 Call us at:</strong> +91-9876543210</p>
+    <p><strong>✉️ Email us at:</strong> contact@andamantourism.com</p>
+  </div>
+
+  <!-- ✅ Success Message Display -->
+  {% if messages %}
+    <div class="mb-3">
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- 📬 Contact Form -->
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" id="phone" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email ID:</label>
+      <input type="email" name="email" id="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="arrival_date">Arrival Date (Optional):</label>
+      <input type="date" name="arrival_date" id="arrival_date" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="message">Message:</label>
+      <textarea name="message" id="message" rows="4" class="form-control" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

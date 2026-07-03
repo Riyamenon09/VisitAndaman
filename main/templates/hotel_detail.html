@@ -1,0 +1,392 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ hotel.name }} – Details{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <a href="javascript:history.back()" class="btn btn-link mb-3">&larr; Back</a>
+
+  <!-- Top heading + meta -->
+  <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-3">
+    <div>
+      <h2 class="mb-1">{{ hotel.name }}</h2>
+      <div class="d-flex align-items-center flex-wrap gap-3 text-muted">
+        <span>
+          {% for i in "01234" %}
+            {% if forloop.counter <= hotel.rating %}
+              <i class="bi bi-star-fill text-warning"></i>
+            {% else %}
+              <i class="bi bi-star text-muted"></i>
+            {% endif %}
+          {% endfor %}
+        </span>
+        {% if hotel.address %}
+          <span><i class="bi bi-geo-alt"></i> {{ hotel.address }}</span>
+        {% endif %}
+        {% if hotel.district %}
+          <span><i class="bi bi-geo"></i> {{ hotel.district }}</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="text-end">
+      <div class="fs-5">
+        <span class="text-muted">from</span>
+        <span class="fw-bold">₹{{ hotel.price_per_night }}</span>
+        <span class="text-muted">/ night</span>
+      </div>
+      <small class="text-muted">Best price for your dates</small>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- LEFT -->
+    <div class="col-lg-8">
+
+      <!-- ===== Gallery: show EVERY image in hotel.gallery ===== -->
+      {% with images=hotel.gallery.all %}
+        {% if images|length > 0 %}
+          <div class="row g-2 mb-3">
+            {% for img in images %}
+              {% if forloop.first %}
+                <!-- big hero -->
+                <div class="col-12">
+                  <a href="{{ img.image.url }}" data-bs-toggle="modal" data-bs-target="#imgModal" data-src="{{ img.image.url }}">
+                    <img src="{{ img.image.url }}" alt="{{ hotel.name }} main"
+                         class="w-100 rounded shadow-sm" style="height:360px; object-fit:cover;">
+                  </a>
+                </div>
+              {% else %}
+                <!-- grid thumbnails -->
+                <div class="col-6 col-md-4 col-lg-3">
+                  <a href="{{ img.image.url }}" data-bs-toggle="modal" data-bs-target="#imgModal" data-src="{{ img.image.url }}">
+                    <img src="{{ img.image.url }}" alt="{{ hotel.name }} gallery {{ forloop.counter }}"
+                         class="w-100 rounded shadow-sm" style="height:180px; object-fit:cover;">
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% elif hotel.image %}
+          <!-- fallback: single image on Hotel -->
+          <div class="mb-3">
+            <img src="{{ hotel.image.url }}" alt="{{ hotel.name }}"
+                 class="w-100 rounded shadow-sm" style="height:360px; object-fit:cover;">
+          </div>
+        {% else %}
+          <div class="ratio ratio-16x9 bg-light rounded d-flex align-items-center justify-content-center mb-3">
+            <span class="text-muted">No images available</span>
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      {% if detail and detail.about %}
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <h5 class="mb-2">About this property</h5>
+            <p class="mb-0">{{ detail.about }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if highlights %}
+        <div class="card shadow-sm mb-3">
+          <div class="card-body">
+            <h5 class="mb-3">Highlights</h5>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3 highlights-grid">
+              {% for h in highlights %}
+                <div class="col">
+                  <div class="d-flex align-items-center gap-2 border rounded p-2 h-100">
+                    <span class="icon-bubble">
+                      {% if "airport" in h|lower %}<i class="bi bi-airplane"></i>
+                      {% elif "breakfast" in h|lower %}<i class="bi bi-egg-fried"></i>
+                      {% elif "view" in h|lower %}<i class="bi bi-binoculars"></i>
+                      {% elif "hygiene" in h|lower %}<i class="bi bi-shield-check"></i>
+                      {% elif "front" in h|lower %}<i class="bi bi-headset"></i>
+                      {% else %}<i class="bi bi-star"></i>{% endif %}
+                    </span>
+                    <span class="small fw-semibold">{{ h }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div id="facilities" class="card shadow-sm mb-3">
+        <div class="card-body">
+          <h5 class="mb-3">Facilities</h5>
+          <div class="row row-cols-2 row-cols-md-3 g-2">
+            {% if amenities %}
+              {% for a in amenities %}
+                <div class="col">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-check2 fw-bold text-success"></i>
+                    <span class="small">{{ a }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <div class="col"><span class="text-muted">No amenities listed yet.</span></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if detail and detail.location_description %}
+        <div id="location" class="card shadow-sm mb-3">
+          <div class="card-body">
+            <h5 class="mb-2">Location</h5>
+            <p class="mb-3">{{ detail.location_description }}</p>
+            {% if detail.map_embed_url %}
+              <div class="ratio ratio-16x9">
+                <iframe src="{{ detail.map_embed_url }}" style="border:0;" allowfullscreen loading="lazy"></iframe>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div id="reviews" class="card shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0">Reviews & Scores</h6>
+            {% if detail and detail.review_score %}
+              <span class="badge bg-success fs-6">{{ detail.review_score }}</span>
+            {% endif %}
+          </div>
+          {% if detail and detail.total_reviews %}
+            <p class="text-muted mb-3">{{ detail.total_reviews }} reviews</p>
+          {% endif %}
+          {% if scores %}
+            {% for s in scores %}
+              <div class="mb-2">
+                <div class="d-flex justify-content-between">
+                  <small>{{ s.label }}</small><small>{{ s.value }}</small>
+                </div>
+                <div class="progress" style="height:8px">
+                  <div class="progress-bar" style="width: {{ s.pct }}%"></div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-muted">No review data yet.</p>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT rail -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm mb-3">
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <i class="bi bi-geo-fill text-danger"></i>
+            <div class="small">{% if hotel.address %}{{ hotel.address }}{% endif %}</div>
+          </div>
+          {% if detail and detail.review_score %}
+            <div class="small text-muted">Rating</div>
+            <div class="fw-semibold">{{ detail.review_score }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-3">
+        <div class="card-body">
+          <h6 class="mb-2">Contact</h6>
+          {% if hotel.contact_number %}<div class="small mb-1"><i class="bi bi-telephone"></i> {{ hotel.contact_number }}</div>{% endif %}
+          {% if hotel.email %}<div class="small"><i class="bi bi-envelope"></i> {{ hotel.email }}</div>{% endif %}
+        </div>
+      </div>
+
+      <!-- Booking & Price -->
+      <div class="card shadow-sm mb-3" id="bookingCard" data-base-price="{{ hotel.price_per_night|floatformat:2 }}">
+        <div class="card-body">
+          <h6 class="mb-3">Booking & Price</h6>
+
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label class="form-label">Check‑in</label>
+              <input type="date" class="form-control" id="checkIn" min="{{ today|date:'Y-m-d' }}">
+            </div>
+            <div class="col-6">
+              <label class="form-label">Check‑out</label>
+              <input type="date" class="form-control" id="checkOut" min="{{ today|date:'Y-m-d' }}">
+            </div>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-4">
+              <label class="form-label">Rooms</label>
+              <input type="number" id="rooms" class="form-control" value="1" min="1" step="1">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Adults</label>
+              <input type="number" id="adults" class="form-control" value="2" min="1" step="1">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Children</label>
+              <input type="number" id="children" class="form-control" value="0" min="0" step="1">
+            </div>
+          </div>
+
+          <div id="childrenAgesWrap" class="mt-2" style="display:none;">
+            <label class="form-label">Children ages</label>
+            <div id="childrenAges" class="d-flex flex-wrap gap-2"></div>
+            <small class="text-muted d-block mt-1">Under 10 years charged at 50%.</small>
+          </div>
+
+          <hr class="my-3">
+
+          <div class="small">
+            <div class="d-flex justify-content-between"><span>Nights</span><span id="nightsTxt">0</span></div>
+            <div class="d-flex justify-content-between"><span>Base (₹{{ hotel.price_per_night }}) × Rooms</span><span id="basePerNightTxt">₹0</span></div>
+            <div class="d-flex justify-content-between"><span>Guest factor</span><span id="guestFactorTxt">1.00</span></div>
+            <div class="d-flex justify-content-between"><span>Subtotal</span><span id="subtotalTxt">₹0</span></div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-2 p-2 rounded border bg-light">
+            <strong>Total</strong><strong id="totalTxt" class="price-pulse">₹0</strong>
+          </div>
+          <small class="text-muted">Prices update automatically as you change inputs.</small>
+
+          <div class="d-grid mt-3">
+            <a id="proceedBtn" href="#" class="btn btn-primary btn-lg">Proceed to Booking</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal for gallery -->
+<div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <img id="modalImg" src="" alt="Large" class="w-100" style="max-height:80vh; object-fit:contain;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .highlights-grid .icon-bubble{
+    width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;
+    border-radius:8px;background:#f6f7fb;
+  }
+  .offer-card{border:1px solid #e7e9ef;border-radius:12px;padding:12px;background:#fff;}
+  .price-pulse{transition:transform .15s ease, background-color .15s ease; padding:.1rem .25rem;border-radius:.25rem}
+  .price-pulse.updated{transform:scale(1.06);background-color:rgba(25,135,84,.15)}
+</style>
+
+<script>
+(function(){
+  // Lightbox
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-bs-target="#imgModal"]');
+    if (!a) return;
+    const src = a.getAttribute('data-src') || a.getAttribute('href');
+    const modalImg = document.getElementById('modalImg');
+    if (modalImg) modalImg.src = src;
+  });
+
+  // Pricing
+  const fmtINR = n => "₹" + (Math.round(n)).toLocaleString('en-IN');
+  const basePrice = parseFloat(document.getElementById('bookingCard').dataset.basePrice || "0");
+  const el = {
+    checkIn:  document.getElementById('checkIn'),
+    checkOut: document.getElementById('checkOut'),
+    rooms:    document.getElementById('rooms'),
+    adults:   document.getElementById('adults'),
+    children: document.getElementById('children'),
+    agesWrap: document.getElementById('childrenAgesWrap'),
+    agesHost: document.getElementById('childrenAges'),
+    nightsTxt: document.getElementById('nightsTxt'),
+    basePerNightTxt: document.getElementById('basePerNightTxt'),
+    guestFactorTxt: document.getElementById('guestFactorTxt'),
+    subtotalTxt: document.getElementById('subtotalTxt'),
+    totalTxt: document.getElementById('totalTxt'),
+    proceedBtn: document.getElementById('proceedBtn')
+  };
+
+  function rebuildAgeInputs(){
+    const count = parseInt(el.children.value || "0", 10);
+    el.agesHost.innerHTML = "";
+    if (count > 0){
+      el.agesWrap.style.display="";
+      for (let i=0;i<count;i++){
+        const sel=document.createElement('select');
+        sel.className="form-select form-select-sm";
+        sel.style.width="100px";
+        for (let a=0;a<=17;a++){
+          const opt=document.createElement('option'); opt.value=a; opt.textContent=a+" yrs"; sel.appendChild(opt);
+        }
+        sel.addEventListener('change', recalc);
+        el.agesHost.appendChild(sel);
+      }
+    } else {
+      el.agesWrap.style.display="none";
+    }
+  }
+  function parseDate(iso){ if(!iso) return null; const d=new Date(iso+"T00:00:00"); return isNaN(d)?null:d; }
+  function diffNights(d1,d2){ if(!d1||!d2) return 0; const nights=Math.floor((d2-d1)/(1000*60*60*24)); return Math.max(0,nights); }
+
+  function recalc(){
+    const ci=parseDate(el.checkIn.value), co=parseDate(el.checkOut.value);
+    if(ci&&co&&co<=ci){const next=new Date(ci); next.setDate(next.getDate()+1); el.checkOut.valueAsDate=next;}
+
+    const nights=diffNights(parseDate(el.checkIn.value), parseDate(el.checkOut.value));
+    const rooms=Math.max(1, parseInt(el.rooms.value||"1",10));
+    const adults=Math.max(0, parseInt(el.adults.value||"0",10));
+    const children=Math.max(0, parseInt(el.children.value||"0",10));
+
+    let childWeight=0;
+    if(children>0){
+      childWeight = Array.from(el.agesHost.querySelectorAll('select')).reduce((s,sel)=>{
+        const age=parseInt(sel.value||"0",10);
+        return s + (age<10?0.5:1.0);
+      },0);
+    }
+    const guestFactor=Math.max(1, adults+childWeight);
+    const basePerNight=basePrice*rooms;
+    const subtotal=basePerNight*Math.max(1,nights)*guestFactor;
+    const total=subtotal;
+
+    el.nightsTxt.textContent=nights;
+    el.basePerNightTxt.textContent=fmtINR(basePerNight);
+    el.guestFactorTxt.textContent=guestFactor.toFixed(2);
+    el.subtotalTxt.textContent=fmtINR(subtotal);
+    el.totalTxt.textContent=fmtINR(total);
+    el.totalTxt.classList.remove('updated'); void el.totalTxt.offsetWidth; el.totalTxt.classList.add('updated');
+    setTimeout(()=>el.totalTxt.classList.remove('updated'),220);
+  }
+
+  ['change','input'].forEach(evt=>{
+    el.checkIn.addEventListener(evt,recalc); el.checkOut.addEventListener(evt,recalc);
+    el.rooms.addEventListener(evt,recalc); el.adults.addEventListener(evt,recalc);
+    el.children.addEventListener(evt,()=>{rebuildAgeInputs(); recalc();});
+  });
+
+  const today=new Date(), tomorrow=new Date(today); tomorrow.setDate(today.getDate()+1);
+  if(!el.checkIn.value) el.checkIn.valueAsDate=today;
+  if(!el.checkOut.value) el.checkOut.valueAsDate=tomorrow;
+
+  rebuildAgeInputs();
+  recalc();
+
+  el.proceedBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    const childAges=Array.from(document.querySelectorAll('#childrenAges select')).map(s=>s.value).join(',');
+    const params=new URLSearchParams({
+      check_in:el.checkIn.value, check_out:el.checkOut.value,
+      rooms:el.rooms.value, adults:el.adults.value, children:el.children.value, child_ages:childAges
+    }).toString();
+    window.location.href = "{% url 'start_booking' hotel.id %}" + "?" + params;
+  });
+})();
+</script>
+{% endblock %}
