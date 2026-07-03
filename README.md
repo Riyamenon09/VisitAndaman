@@ -135,6 +135,6 @@ VisitAndaman/
 
 # 👩‍💻 Developer
 
-**Riya S. Menon**
+**Riya.S.Menon**
 
 Full Stack Developer | AI & Machine Learning Enthusiast
