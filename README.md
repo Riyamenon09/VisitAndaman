@@ -1,59 +1,140 @@
-# 🏝️ Andaman & Nicobar Tourism Web Application  
-
-**Challenging problem** <br>
-The most challenging problem I solved would be VisitAndaman full stack project using Django,MySQL. For building this project, i first research about the places which are a tourist spot of Andaman and Nicobar Islands. It was made using Django at the backend, so i had to understand how to work through ORM,model,template,view, how to connect different model to other without writing complex sql query. Another challenge was making the UI responsive and integrating a rule-based chatbot to answer user queries, which required both frontend and backend coordination. And to make a responsive UI to attract any audience. 
-
-
-
-
-**About project** <br>
-
-A **full-stack tourism platform** designed for the Andaman & Nicobar Islands, where users can explore destinations, learn about the islands, and seamlessly **view & book hotels and travel packages**.  
-
-Built using **Django** and **MySQL** for robust backend handling, with a **rule-based Q&A chatbot** to assist users in navigating the website and finding the right information.
+# 🏝️ VisitAndaman – Andaman & Nicobar Tourism Web Application
 
 ---
 
-## ✨ Features  
+# 📸 Application Preview
 
-- 🗺️ **Explore Places**  
-  Browse through detailed information about various tourist spots in the Andaman & Nicobar Islands, complete with images and descriptions.  
+## 🏠 Home Page
 
-- 🏨 **Hotel Booking**  
-  View hotels, apply filters (rating, price, rooms, sea view), and book accommodations online.  
+The landing page features a responsive Bootstrap carousel showcasing the beauty of the Andaman & Nicobar Islands.
 
-- 🎁 **Tour Packages**  
-  Explore and book pre-curated travel packages for a hassle-free trip.  
-
-- 🤖 **Rule-Based Q&A Chatbot**  
-  An integrated chatbot to assist users by answering queries about:  
-  - Tourist spots and attractions  
-  - Available hotels and packages  
-  - Website navigation and booking steps  
-
-- 📊 **Admin Panel**  
-  Manage hotels, packages, bookings, and customer queries via Django's built-in admin interface.  
+![Home Page](w1.png)
 
 ---
 
-## 🏗️ Tech Stack  
+## 🌴 Explore Tourist Destinations
 
-### Frontend  
-- **HTML5, CSS3, JavaScript**  
-- **Bootstrap** for responsive design  
+Users can browse famous tourist attractions with detailed information and images.
 
-### Backend  
-- **Django** (Python framework)  
-- **MySQL** (Relational Database for efficient data management)  
-
-### Chatbot  
-- **Rule-Based Q&A system** implemented in Python to handle FAQs and booking-related queries.  
+![Places](w3.png)
 
 ---
 
-## ⚙️ Project Workflow  
+## 🏨 Hotel Booking
 
-1. **User visits homepage** – Browse places, hotels, or packages.  
-2. **Explore hotels/packages** – Filter and select based on preferences.  
-3. **Booking process** – Users log in/sign up and confirm booking.  
-4. **Chatbot assistance** – Available for queries regarding navigation, hotels, and packages.  
+Users can:
+
+- Browse available hotels
+- Filter hotels by rating, price, rooms, and sea-view
+- View hotel details
+- Check availability
+- Book hotels online
+
+![Hotels](w2.png)
+
+---
+
+# ✨ Features
+
+### 🌍 Explore Andaman
+
+- Browse famous tourist destinations
+- Learn about islands, monuments and beaches
+- View detailed information with images
+
+---
+
+### 🏨 Hotel Booking
+
+- Browse hotels
+- Hotel filters
+  - ⭐ Rating
+  - 💰 Price
+  - 🌊 Sea View
+  - 🏊 Swimming Pool
+  - 📶 Free Wi-Fi
+  - 🚗 Parking
+  - 🧖 Spa
+- Hotel Details Page
+- Online Booking
+
+---
+
+### 📄 Booking Invoice
+
+After confirming a booking, users can:
+
+- View Booking Summary
+- Download PDF Invoice
+
+**Invoice generation is implemented using ReportLab.**
+
+---
+
+
+### 📞 Contact Page
+
+Visitors can submit travel enquiries through the contact form.
+
+---
+
+### 🔐 Django Admin Panel
+
+Manage
+
+- Hotels
+- Hotel Images
+- Hotel Details
+- Packages
+- Package Images
+- Package Bookings
+- Tourist Places
+- Contact Messages
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+
+### Backend
+
+- Django
+
+### Database
+
+- MySQL
+
+### PDF Generation
+
+- ReportLab
+
+---
+
+# 📂 Project Structure
+
+```
+VisitAndaman/
+│
+├── main/
+├── static/
+├── media/
+├── tourism_project/
+├── manage.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+
+# 👩‍💻 Developer
+
+**Riya S. Menon**
+
+Full Stack Developer | AI & Machine Learning Enthusiast
