@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block title %}Havelock Island (Swaraj Dweep) — Beaches, Diving & Resorts{% endblock %}
+
+{% block content %}
+<style>
+  /* ===== HERO (full-width) ===== */
+  .hero-bleed{
+    position:relative;height:320px;width:100%;
+    background-size:cover;background-repeat:no-repeat;background-position:50% 62%;
+  }
+  .hero-bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:flex-start;text-align:left;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media (max-width:768px){.hero-bleed{height:240px;background-position:50% 58%}.hero-title{font-size:1.65rem}}
+
+  /* ===== Sections ===== */
+  .section{padding:52px 0; text-align:left !important;}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2, .section p{ text-align:left !important; margin-left:0 !important; }
+  .section .row{ justify-content:flex-start !important; }
+  .section ul{ padding-left:1.2rem; margin-left:0; }
+
+  /* Info card */
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;padding:16px;border-radius:10px}
+
+  /* Galleries (right column) */
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media (min-width:768px){.gallery .img-wrap{height:210px}}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- ===== HERO ===== -->
+<div class="hero-bleed" style="background-image:url('/media/places/havelock.webp');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Havelock Island — Beaches, Diving & Slow Life</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW (Text Left • Images Right) -->
+  <section id="overview" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          Havelock Island (officially <em>Swaraj Dweep</em>) is the Andamans’ poster child—powdery white sands,
+          lagoons in shades of turquoise, coral reefs, and a relaxed island vibe. It’s India’s scuba capital and a
+          honeymoon favorite, yet still feels laid-back once you leave the jetty road.
+        </p>
+        <ul>
+          <li>Ferry: ~2–2.5 hrs from Port Blair; ~1–1.5 hrs from Neil</li>
+          <li>Stay: Beach huts to luxury resorts along Beach No. 5 & 2</li>
+          <li>Best time: Oct–Apr (driest seas, best visibility)</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/havelock.webp" alt="Havelock Beach"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/package/suba1.jpg" alt="Scuba Diving at Havelock"></div></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUST-VISIT BEACHES -->
+  <section id="beaches" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Must-Visit Beaches</h2>
+        <ul>
+          <li><strong>Radhanagar Beach (Beach No. 7):</strong> Often listed among Asia’s best—broad sugar-white sands,
+            gentle gradient, spectacular sunsets. <em>No water sports here, it’s kept pristine.</em></li>
+          <li><strong>Elephant Beach:</strong> Reach by 20-min speedboat or a 30–40 min forest trek; best for
+            <em>snorkeling</em> and <em>water activities</em>.</li>
+          <li><strong>Kalapathar Beach:</strong> A moody sunrise spot with black rocks and casuarina fringes—great for photos.</li>
+          <li><strong>Vijaynagar / Govindnagar (Beach 5 & 3):</strong> Lagoon-like shallows with many beachfront stays.</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/knowmore/beach.jpg" alt="Radhanagar Beach"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/kayak.jpg" alt="Kayaking in lagoons"></div></div>
+          <div class="col-12"><div class="img-wrap"><img src="/media/activities/sunset.jpg" alt="Havelock Sunset"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVING & WATERSPORTS -->
+  <section id="diving" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Diving & Watersports</h2>
+        <p>
+          Havelock has India’s most reliable dive training and reef access. For first-timers, try a <em>Discover Scuba</em>
+          with certified centers; for certified divers, signature sites include <strong>Aquarium</strong>, <strong>The Wall</strong>,
+          <strong>Barracuda City</strong>, and <strong>Johnny’s Gorge</strong>. Expect turtles, rays, schooling snappers,
+          and healthy hard-coral gardens.
+        </p>
+        <ul>
+          <li>Other activities: Kayaking (including bioluminescence nights), SUP, glass-bottom boat, sea walk at Elephant Beach</li>
+          <li>Best viz: Dec–Mar; shoulder season Oct/Apr is pleasant</li>
+          <li>Always choose SSI/PADI certified operators</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/scuba.jpg" alt="Dive boat"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/snorkel.jpg" alt="Snorkeling reef"></div></div>
+          <div class="col-12"><div class="img-wrap"><img src="/media/activities/kayak.jpg" alt="Night kayaking"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2–3 DAY ITINERARY -->
+  <section id="itinerary" class="section">
+    <h2>Suggested 2–3 Day Itinerary</h2>
+    <ul>
+      <li><strong>Day 1:</strong> Ferry to Havelock → check-in → evening at Radhanagar (sunset).</li>
+      <li><strong>Day 2:</strong> Morning scuba (or DSD). Afternoon rest. Late-evening bioluminescence kayak (on moonless nights).</li>
+      <li><strong>Day 3:</strong> Boat to Elephant Beach for snorkeling & water sports → lunch near jetty → Kalapathar for sunrise/souvenirs → depart.</li>
+    </ul>
+  </section>
+
+  <!-- STAY & FOOD -->
+  <section id="stay" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Staying & Eating</h2>
+        <p>
+          Most accommodations line the east coast road (Beach 5/3). Expect cafés serving fresh seafood, Indian and
+          continental fare. Beach shacks close early; plan dinners by 9–9:30 PM.
+        </p>
+        <ul>
+          <li>Budget beach huts → boutique eco-resorts → luxury villas</li>
+          <li>Try grilled fish, coconut curries, and fresh juices</li>
+          <li>ATMs limited; many places accept UPI/cards but carry some cash</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="lead-card">
+          <div class="row g-3">
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">2–4 nights</div><div class="text-muted small">Ideal Stay</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">Oct–Apr</div><div class="text-muted small">Best Months</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">Scooter</div><div class="text-muted small">Best to get around</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">Jetty Rd</div><div class="text-muted small">Restaurants & shops</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITOR INFO -->
+  <section id="info" class="section">
+    <h2>Visitor Info</h2>
+    <ul>
+      <li><strong>Getting there:</strong> Govt/private ferries from Port Blair & Neil (book early in season).</li>
+      <li><strong>Local transport:</strong> Rent scooters/bicycles; taxis available. Roads are simple—drive slow at night.</li>
+      <li><strong>Connectivity:</strong> Mobile data works but can be spotty; many cafés offer Wi-Fi.</li>
+      <li><strong>Responsible travel:</strong> No coral/sea-shell collection; avoid stepping on reefs at low tide.</li>
+    </ul>
+  </section>
+
+  <!-- MAP (Right) + GETTING THERE (Left) -->
+  <section id="map" class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Getting There</h2>
+        <p>
+          High-speed ferries run daily from Port Blair’s Haddo/PHR jetties and from Neil Island. On arrival at
+          Havelock Jetty, autos and rentals are available. Pre-book tickets in peak months (Dec–Feb).
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+          <iframe
+            src="https://www.google.com/maps?q=Havelock+Island+Andaman&output=embed"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips" class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Sun is strong—carry reef-safe sunscreen, hat, and plenty of water.</li>
+      <li>For bioluminescence, pick moonless nights; ask operators for slots.</li>
+      <li>Respect beach flags; currents can change with tides/season.</li>
+      <li>Book diving with certified SSI/PADI centers; avoid touching corals/marine life.</li>
+    </ul>
+  </section>
+
+</div>
+{% endblock %}

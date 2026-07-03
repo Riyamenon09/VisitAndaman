@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}Indira Point — Southernmost Tip of India (Great Nicobar){% endblock %}
+
+{% block content %}
+<style>
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{text-align:left!important;margin-left:0!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/indirapoint.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Indira Point — Great Nicobar</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          <strong>Indira Point</strong> is the <em>southernmost tip of India</em>,
+          located on <strong>Great Nicobar Island</strong>. It is marked by a tall
+          lighthouse standing against the vast Indian Ocean. This remote site is
+          ecologically sensitive and strategically significant.
+        </p>
+        <ul>
+          <li>Region: Great Nicobar (Nicobar Islands)</li>
+          <li>Feature: Lighthouse built in 1972</li>
+          <li>Vibe: Remote, wild, far from tourist routes</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-12"><div class="img-wrap"><img src="/media/places/indirapoint.jpg" alt="Indira Point Lighthouse"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS & PERMITS -->
+  <section class="section">
+    <h2>Access & Permits</h2>
+    <p>
+      Indira Point is <strong>not freely open</strong> to tourists. Visitors require
+      special permits issued by the administration, and travel involves reaching
+      <em>Campbell Bay</em> by ship or helicopter, followed by road journey southwards.
+    </p>
+    <ul>
+      <li>Advance government permits required</li>
+      <li>Travel restricted for ecological and security reasons</li>
+      <li>Best season: Nov–Apr (calm seas)</li>
+    </ul>
+    <p class="muted">Travel is subject to change based on weather and regulations — always confirm before planning.</p>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <h2>Highlights</h2>
+    <ul>
+      <li>The <strong>Indira Point Lighthouse</strong> at the edge of the ocean.</li>
+      <li>Dramatic views of the <em>Ten Degree Channel</em>.</li>
+      <li>Wild untouched landscapes of Great Nicobar.</li>
+    </ul>
+  </section>
+
+  <!-- RESPONSIBLE TRAVEL -->
+  <section class="section">
+    <h2>Responsible Travel</h2>
+    <ul>
+      <li>Follow all rules laid down by local authorities and the Indian Navy.</li>
+      <li>No littering; carry back all waste.</li>
+      <li>Respect the sensitive tribal & ecological zones of Great Nicobar.</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Indira+Point+Great+Nicobar&output=embed"
+              loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

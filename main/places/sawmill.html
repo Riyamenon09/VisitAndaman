@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block title %}Chatham Saw Mill — Heritage Timber Mill & Forest Museum{% endblock %}
+
+{% block content %}
+<style>
+  /* Shared page CSS */
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;
+    display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;
+    text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{text-align:left!important;margin-left:0!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;
+    padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #000000;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/sawmill.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Chatham Saw Mill — Asia’s Oldest Timber Mill</h1>
+  </div>
+</div>
+<a href="{% url 'places' %}" class="back-btn">← Back</a>
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          The <strong>Chatham Saw Mill</strong>, established in <em>1883</em>, is among Asia’s
+          oldest and largest timber mills. Located on Chatham Island and connected to Port Blair
+          by a bridge, it showcases the colonial timber industry and the natural wealth of
+          the Andamans.
+        </p>
+        <ul>
+          <li>~10 minutes drive from Aberdeen Bazaar</li>
+          <li>Still operational in limited capacity</li>
+          <li>On-site <strong>Forest Museum</strong> for visitors</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/places/sawmill.jpg" alt="Chatham Saw Mill exterior"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/culture/handicraft.jpg" alt="Woodcrafts"></div></div>
+          <div class="col-12"><div class="img-wrap"><img src="/media/history/cellular-arches.jpg" alt="Historic exhibits"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="section">
+    <h2>History</h2>
+    <p>
+      Built by the British to process rich hardwoods like teak, padauk, and satinwood,
+      the mill supplied timber across South & Southeast Asia. During World War II,
+      Chatham Island was bombed by Japanese forces, leaving marks still visible.
+      Post-independence, it has served both industrial and heritage roles.
+    </p>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <h2>Highlights</h2>
+    <ul>
+      <li><strong>Saw Mill Machinery:</strong> Massive bandsaws and log yards from colonial times.</li>
+      <li><strong>Forest Museum:</strong> Exhibits on Andaman forestry, rare timber samples, dioramas of wildlife, and handicrafts.</li>
+      <li><strong>WWII History:</strong> Sections of the mill still show bomb damage from 1942.</li>
+      <li><strong>Bridge Views:</strong> Entry via Chatham Bridge offers views of Port Blair’s harbor.</li>
+    </ul>
+  </section>
+
+  <!-- VISITOR INFO -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Visitor Info</h2>
+        <ul>
+          <li><strong>Location:</strong> Chatham Island, Port Blair (connected by road bridge).</li>
+          <li><strong>Entry Fee:</strong> Nominal charge (~₹20–50; camera fee extra).</li>
+          <li><strong>Timings:</strong> ~8:30 AM – 2:30 PM (Mon–Sat, closed Sundays/holidays).</li>
+          <li><strong>Time Needed:</strong> 1–2 hours (mill tour + museum).</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="lead-card">
+          <div class="row g-3">
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">1883</div><div class="text-muted small">Founded</div></div>
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">1–2 hrs</div><div class="text-muted small">Visit duration</div></div>
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">Port Blair</div><div class="text-muted small">Nearby</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Photography may be restricted inside certain mill sections — ask before clicking.</li>
+      <li>Best visited in the morning before the sun gets strong.</li>
+      <li>Pair with <em>Fisheries Museum</em> and <em>Samudrika Marine Museum</em> for a full half-day circuit.</li>
+      <li>Great rainy-day backup since most of the tour is indoors/sheltered.</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Chatham+Saw+Mill+Port+Blair&output=embed"
+              loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

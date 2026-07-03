@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}Parrot Island — Sunset Roosting Spectacle{% endblock %}
+
+{% block content %}
+<style>
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{text-align:left!important;margin-left:0!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+
+  /* Back button */
+  .back-btn {
+    display:inline-block;
+    float:right;
+    margin-top:20px;
+    margin-bottom:10px;
+    padding:8px 18px;
+    background:#000000;
+    color:#fff !important;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:0.95rem;
+    font-weight:600;
+    transition:background .3s;
+  }
+  
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/parrot.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Parrot Island — Baratang</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Back Button -->
+  <a href="{% url 'places' %}" class="back-btn">← Back</a>
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          <strong>Parrot Island</strong>, near Baratang, is famous for the daily
+          <strong>sunset roosting spectacle</strong> of thousands of parrots and parakeets.
+          As dusk approaches, the birds circle the tiny mangrove island in waves before
+          settling in for the night — an unforgettable natural show.
+        </p>
+        <ul>
+          <li>Location: Baratang, Middle Andaman</li>
+          <li>Experience: Short boat ride at sunset</li>
+          <li>Best season: Nov–Apr (clear skies)</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-12"><div class="img-wrap"><img src="/media/places/parrot.jpg" alt="Parrot Island roosting"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <h2>The Experience</h2>
+    <p>
+      Boats depart close to sunset from Baratang jetty. As you approach the islet, the
+      <strong>sky fills with flocks</strong> of parrots circling before landing in the mangroves.
+      The spectacle lasts 20–30 minutes until the island is fully covered with birds.
+    </p>
+    <ul>
+      <li>Duration: 45–60 min round-trip boat ride</li>
+      <li>No landing — viewing only from boats</li>
+      <li>Best with binoculars or zoom lens</li>
+    </ul>
+  </section>
+
+  <!-- VISITOR INFO -->
+  <section class="section">
+    <h2>Visitor Info</h2>
+    <ul>
+      <li><strong>Tickets:</strong> Buy at jetty/through local operator.</li>
+      <li><strong>Departure:</strong> 4:30–5:00 PM (seasonal, confirm locally).</li>
+      <li><strong>Carry:</strong> Mosquito repellent, water, camera.</li>
+      <li><strong>Combine with:</strong> Limestone Caves or Mud Volcano during day trip.</li>
+    </ul>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Keep noise low — it helps the birds settle naturally.</li>
+      <li>Photography: Use higher ISO for low light; no flash.</li>
+      <li>Be flexible — sightings depend on season and bird movement.</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Parrot+Island+Baratang&output=embed"
+              loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

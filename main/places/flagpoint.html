@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}Flag Point — Historic Tricolour Site, Port Blair{% endblock %}
+
+{% block content %}
+<style>
+  /* Shared CSS for consistency */
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;
+    display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;
+    text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{text-align:left!important;margin-left:0!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #0d6efd;background:#d0def9;
+    padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/flagpoint.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Flag Point — Where Netaji Hoisted the Tricolour</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          <strong>Flag Point</strong> in Port Blair marks the historic spot where
+          <strong>Netaji Subhash Chandra Bose</strong> hoisted the Indian tricolour on
+          <em>30th December 1943</em>, declaring Andaman & Nicobar as freed territory
+          from British rule. Today, the site features a tall flag mast, memorial plaques,
+          and a peaceful promenade along the seafront.
+        </p>
+        <ul>
+          <li>Located: South Point, Port Blair (~10 mins from city centre)</li>
+          <li>Best time: Evening (sunset views over the harbour)</li>
+          <li>Time needed: 20–30 mins</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-12"><div class="img-wrap"><img src="/media/places/flagpoint.jpg" alt="Flag Point Memorial"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="section">
+    <h2>Historic Significance</h2>
+    <p>
+      On 30th December 1943, during World War II, Netaji Subhash Chandra Bose, as the leader
+      of the <strong>Azad Hind Government</strong>, hoisted the tricolour here to mark India’s
+      first symbolic claim of freedom from colonial rule. He renamed the islands:
+    </p>
+    <ul>
+      <li><strong>Andaman → Shaheed Dweep</strong></li>
+      <li><strong>Nicobar → Swaraj Dweep</strong></li>
+    </ul>
+    <p>
+      Today, the spot is maintained by the Indian Navy and stands as a reminder of Netaji’s vision
+      and sacrifices.
+    </p>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <h2>Highlights</h2>
+    <ul>
+      <li>Tall tricolour flag mast fluttering against the sea backdrop.</li>
+      <li>Commemorative plaques with details of Netaji’s visit.</li>
+      <li>Quiet promenade with benches and sea breeze.</li>
+      <li>Beautiful sunset photography point overlooking Ross Island in the distance.</li>
+    </ul>
+  </section>
+
+  <!-- VISITOR INFO -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Visitor Info</h2>
+        <ul>
+          <li><strong>Location:</strong> South Point, Port Blair</li>
+          <li><strong>Entry:</strong> Free, open to all</li>
+          <li><strong>Timings:</strong> Open all day; evenings most popular</li>
+          <li><strong>Best combined with:</strong> Marina Park, Cellular Jail light & sound show</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="lead-card">
+          <div class="row g-3">
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">1943</div><div class="text-muted small">Tricolour Hoisted</div></div>
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">30 Dec</div><div class="text-muted small">Historic Day</div></div>
+            <div class="col-6 col-md-4"><div class="fw-bold fs-5">Free</div><div class="text-muted small">Entry</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Visit around 4:30–5:30 PM for golden light and cooler weather.</li>
+      <li>Combine with a short evening walk at Marina Park nearby.</li>
+      <li>Carry a small camera or phone — flag + sea makes iconic shots.</li>
+      <li>Good educational stop for families/kids learning about Netaji.</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Flag+Point+Port+Blair&output=embed"
+              loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block title %}Barren Island — India’s Only Active Volcano{% endblock %}
+
+{% block content %}
+<style>
+  .hero-bleed{position:relative;height:320px;background-size:cover;background-position:50% 62%}
+  .hero-bleed::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.25))}
+  .hero-inner{position:relative;z-index:1;height:100%;
+    display:flex;align-items:center;justify-content:flex-start;color:#fff}
+  .hero-title{font-size:2.2rem;font-weight:800;
+    text-shadow:0 2px 12px rgba(0,0,0,.45);margin:0}
+  @media(max-width:768px){.hero-bleed{height:240px}.hero-title{font-size:1.65rem}}
+
+  .section{padding:52px 0;text-align:left!important}
+  .section:nth-of-type(even){background:#f5f7fb}
+  .section h2,.section p{text-align:left!important;margin-left:0!important}
+  .section .row{justify-content:flex-start!important}
+  .section ul{padding-left:1.2rem;margin-left:0}
+
+  .gallery{margin-top:12px}
+  .gallery .img-wrap{position:relative;overflow:hidden;border-radius:10px;height:180px}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery .img-wrap:hover img{transform:scale(1.04)}
+  @media(min-width:768px){.gallery .img-wrap{height:210px}}
+
+  .lead-card{border-left:4px solid #dc3545;background:#f7d7d7;
+    padding:16px;border-radius:10px}
+  .muted{color:#6c757d}
+  .back-btn {
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px 18px;
+  background: #0d6efd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background .3s;
+}
+.back-btn:hover {
+  background: #0b5ed7;
+  text-decoration: none;
+}
+</style>
+
+<!-- HERO -->
+<div class="hero-bleed" style="background-image:url('/media/places/barren.jpg');">
+  <div class="hero-inner container">
+    <h1 class="hero-title">Barren Island — India’s Active Volcano</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Overview</h2>
+        <p>
+          <strong>Barren Island</strong>, about 135 km northeast of Port Blair, is the
+          site of South Asia’s only confirmed active volcano.
+          Rising dramatically from the Bay of Bengal, the island is uninhabited except for
+          occasional monitoring teams. Tourists are not allowed to land — you can only
+          <em>view from a vessel</em> or join <strong>liveaboard scuba expeditions</strong>
+          in the surrounding waters.
+        </p>
+        <ul>
+          <li>First eruption recorded: 1787; most recent: 2017–18</li>
+          <li>Uninhabited; protected area</li>
+          <li>Accessible only by sea (charter/ferry/liveaboard)</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-12"><div class="img-wrap"><img src="/media/places/barren.jpg" alt="Barren Island Volcano"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <h2>Highlights</h2>
+    <ul>
+      <li>Black volcanic slopes with smoking vents (when active).</li>
+      <li>Stark, lunar-like landscape with no permanent vegetation on the crater.</li>
+      <li>Pristine reefs and clear waters surrounding the island.</li>
+      <li>Rare chance to witness an active volcano in Indian territory.</li>
+    </ul>
+  </section>
+
+  <!-- DIVING -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Diving Experience</h2>
+        <p>
+          The waters around Barren Island are considered some of the best in the world.
+          <strong>Advanced divers</strong> on liveaboard boats can explore lava-formed reefs with
+          <em>30+ meter visibility</em>, encountering manta rays, reef sharks,
+          schooling barracuda, tunas, and large pelagics.
+        </p>
+        <ul>
+          <li>Top dive sites: Lava Flow, Purple Haze, Manta Point</li>
+          <li>Best season: Nov–Apr (calm seas, best visibility)</li>
+          <li>Requires: Advanced Open Water certification recommended</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3 gallery">
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/scuba.jpg" alt="Scuba diving at Barren Island"></div></div>
+          <div class="col-6"><div class="img-wrap"><img src="/media/activities/snorkel.jpg" alt="Reef fish"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITOR INFO -->
+  <section class="section">
+    <div class="row g-4 align-items-start">
+      <div class="col-md-6">
+        <h2>Visitor Info</h2>
+        <ul>
+          <li><strong>Access:</strong> Day boats from Havelock/Port Blair (view only) OR liveaboard diving trips.</li>
+          <li><strong>Permits:</strong> Mandatory, arranged via operators.</li>
+          <li><strong>Stay:</strong> No accommodation — overnight only on vessels.</li>
+          <li><strong>Duration:</strong> 12–14 hrs for day boat, 3–6 nights for liveaboard expeditions.</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="lead-card">
+          <div class="row g-3">
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">1787</div><div class="text-muted small">First eruption</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">2017</div><div class="text-muted small">Latest eruption</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">135 km</div><div class="text-muted small">From Port Blair</div></div>
+            <div class="col-6 col-md-3"><div class="fw-bold fs-5">Nov–Apr</div><div class="text-muted small">Best season</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="section">
+    <h2>Safety &amp; Eco Guidelines</h2>
+    <ul>
+      <li>Landing on the island is prohibited to protect fragile ecosystems.</li>
+      <li>Trips are weather-dependent — always check forecast before booking.</li>
+      <li>Scuba diving only with authorized, certified operators.</li>
+      <li>Carry seasickness medication if prone; waters can get choppy.</li>
+    </ul>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Photographers: Best time is morning light; carry zoom lens for crater shots from boat.</li>
+      <li>Divers: Expect strong currents — plan with experienced dive leaders.</li>
+      <li>Pack: Water, snacks, sunscreen, hat, dry bag (for day boats).</li>
+    </ul>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <h2>Map</h2>
+    <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)">
+      <iframe src="https://www.google.com/maps?q=Barren+Island+Andaman&output=embed"
+              loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
